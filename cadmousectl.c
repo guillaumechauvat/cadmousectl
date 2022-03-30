@@ -128,7 +128,16 @@ int main(int argc, char **argv)
 {
     int opt, res;
 
-    hid_device *mouse = hid_open(0x256f, 0xc650, NULL);
+    // Try loading the different versions until one works
+    
+    int n_models = 3;
+    int models[] = {0xc650, 0xc656, 0xc652};  // CadMouse, CadMouse Pro, CadMouse Pro Wireless
+    hid_device *mouse = NULL;
+    int i_model = 0;
+    while (i_model < n_models && mouse == NULL) {
+      mouse = hid_open(0x256f, models[i_model], NULL);
+      i_model++;
+    }
 
     if (mouse == NULL) {
         fputs("Could not find/open a CadMouse\n", stderr);
