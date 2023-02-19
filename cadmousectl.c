@@ -131,7 +131,7 @@ int main(int argc, char **argv)
     // Try loading the different versions until one works
     
     int n_models = 3;
-    int models[] = {0xc650, 0xc656, 0xc652};  // CadMouse, CadMouse Pro, CadMouse Pro Wireless
+    int models[] = {0xc650, 0xc655, 0xc656, 0xc652};  // CadMouse, CadMouse Compact, CadMouse Pro, CadMouse Pro Wireless
     hid_device *mouse = NULL;
     int i_model = 0;
     while (i_model < n_models && mouse == NULL) {
